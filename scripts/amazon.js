@@ -1,7 +1,7 @@
 
 let productshtml = '';
 products.forEach((product) => {
-    productshtml +=`
+  productshtml += `
         <div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
@@ -14,14 +14,14 @@ products.forEach((product) => {
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${product.rating.stars*10}.png">
+              src="images/ratings/rating-${product.rating.stars * 10}.png">
             <div class="product-rating-count link-primary">
               ${product.rating.count}
             </div>
           </div>
 
           <div class="product-price">
-            ${(product.pricecents/100).toFixed(2)}
+            ${(product.priceCents / 100).toFixed(2)}
           </div>
 
           <div class="product-quantity-container">
@@ -46,14 +46,45 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary  js-add-to-cart"
+          data-product-id = "${product.id}" >
             Add to Cart
           </button>
         </div>
     `;
-    
+
 });
 
-console.log(productshtml);
+// console.log(productshtml);
 
-document.querySelector('.js-products-grid').innerHTML=productshtml;
+document.querySelector('.js-products-grid').innerHTML = productshtml;
+
+document.querySelectorAll('.js-add-to-cart')
+  .forEach((button) => {
+    button.addEventListener('click', () => {
+      // console.log(button.dataset.productName);
+      const productId = button.dataset.productId;
+
+      let matchingitem;
+
+      // we check if product already in the cart then increase Quantity
+      cart.forEach((item) =>{
+        if (productId===item.productName) {
+          matchingitem = item;
+        }
+
+      });
+
+      if(matchingitem){
+        matchingitem.quantity+=1;
+      }else{
+        cart.push({
+          productId:productId,
+          quantity :1
+        });
+      }
+
+      
+      console.log(cart);
+    });
+  });
