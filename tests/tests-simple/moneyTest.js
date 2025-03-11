@@ -1,4 +1,4 @@
-import {formatcurrency } from '../scripts/utils/money.js';
+import {formatcurrency } from '../../scripts/utils/money.js';
 if(formatcurrency(2000)==='20.00'){
     console.log('YES');
 }else{
