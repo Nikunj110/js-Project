@@ -30,7 +30,7 @@ class Product {
   getPrice() {
     return `${formatcurrency(this.priceCents)}`;
   }
-  extraInfoHTML(){
+  extraInfoHTML() {
     return '';
   }
 
@@ -40,9 +40,9 @@ class Clothing extends Product {
   sizeChartLink;
   constructor(productDetails) {
     super(productDetails);
-    this.sizeChartLink = productDetails.sizeChartLink; 
+    this.sizeChartLink = productDetails.sizeChartLink;
   }
-  extraInfoHTML(){
+  extraInfoHTML() {
     // super.extraInfoHTML();
     return `
       <a href = "${this.sizeChartLink}" target="_blank">size Chart </a>
@@ -50,6 +50,30 @@ class Clothing extends Product {
   }
 
 }
+
+// const date = new Date();
+// console.log(date);
+// console.log(date.toLocaleTimeString());
+/*
+console.log(this);
+const object2 = {
+  a:2,
+  b:this.a
+};*/
+
+// function logthis() {
+//   console.log(this);
+// }
+// logthis();
+
+// logthis.call('Hello');
+
+// const object3 = {
+//   method:()=>{
+//     console.log(this);
+//   }
+// }
+// object3.method();
 
 export const products = [
   {
